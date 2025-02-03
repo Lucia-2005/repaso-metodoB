@@ -1,0 +1,107 @@
+package ejercicioRepaso;
+
+import java.util.Scanner;
+
+class PalabraA {
+	String termino;
+	String deficion;
+	
+
+	public PalabraA(String termino, String deficion) {
+		this.termino = termino;
+		this.deficion = deficion;
+	}
+
+	public String getTermino() {
+		return termino;
+	}
+
+	public String getDeficion() {
+		return deficion;
+	}
+
+	public void setTermino(String termino) {
+		this.termino = termino;
+	}
+
+	public void setDeficion(String deficion) {
+		this.deficion = deficion;
+	}
+}
+
+public class MetodoA {
+	static void mostrarMenu() {
+		System.out.println("1. Introducir un nuevo término y su definición en el diccionario: ");
+		System.out.println("2. Mostrar todos los términos (sin deficiones): ");
+		System.out.println("3. Obtener la definición de un termino");
+		System.out.println("4. Eliminar un termino y su definición");
+		System.out.println("5. Salir");
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner s = new Scanner(System.in);
+		PalabraA [] diccionario = new PalabraA[100];
+		int opcion;
+		String termino;
+		String definicion;
+		int contador = 0;
+		String mostrar;
+		
+		do {
+			System.out.println("----------------------------------------------");
+			mostrarMenu();
+			opcion = s.nextInt();
+		
+			switch (opcion){
+				case 1:
+					System.out.println("Introduzca un termino: ");
+					termino = s.next();//para que me pille la palabra
+					s.nextLine();// para consuma el intro 
+					System.out.println("Introduzca una definicion: ");
+					definicion = s.nextLine();//para que pille la definición
+					diccionario[contador] = new PalabraA(termino, definicion);
+					contador++;
+					break;	
+					
+				case 2:
+					System.out.println("Mostrar todos los terminos: ");
+					for(int i = 0; i<contador;i++) {
+					System.out.println(diccionario[i].getTermino());
+					}
+					
+					break;
+				case 3:
+					System.out.println("introduce el termino: ");
+					String palabra=s.next();
+					for(int i=0; i<contador;i++) {
+						if(palabra.equals(diccionario[i].getTermino())){
+							System.out.println("Definición: ");
+							System.out.println(diccionario[i].getDeficion());
+						}
+					}
+					break;
+					
+				case 4:
+					System.out.println("introduce el termino: ");
+					String palabraEliminar=s.next();
+					for(int i=0; i<contador;i++) {
+						if(palabraEliminar.equals(diccionario[i].getTermino())){
+							diccionario[i].setTermino("");
+							diccionario[i].setDeficion(null);
+							System.out.println("termino eliminado");
+						}
+					}
+						break;
+						
+				case 5:
+					System.out.println("saliendo del programa... ..."); break;
+			
+			default:
+				System.out.println("Opcion Invalida");
+			}
+		
+		} while(opcion!=0);
+		
+	}
+}
