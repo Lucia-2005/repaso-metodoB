@@ -30,7 +30,6 @@ class Palabra {
 	}	
 }
 
-
 public class MetodoB {
 
 	static void menu() {
@@ -45,7 +44,6 @@ public class MetodoB {
 	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		List<Palabra> diccionario=new ArrayList<>();
 		Scanner sc=new Scanner(System.in);
 		
@@ -71,7 +69,31 @@ public class MetodoB {
 				System.out.print(diccionario.get(i).getTermino()+" ");
 			}
 			break;
-		
+		case 3:
+			System.out.println("Introduzca una definicion ");
+			definicion = sc.next();
+			for(int i=0; i<diccionario.size();i++) {
+				if(definicion.equals(diccionario.get(i))){//coge la palabra def q el usuario intr y la comp. con la q esta guardada en la pos i 
+						System.out.println(diccionario.get(i).getTermino());
+				}
+				
+			}
+			break;
+		case 4: 
+			System.out.print("introduzca el termino: ");
+			 termino=sc.next();
+			for(int i=0; i<diccionario.size();i++) {
+				if(termino.equals(diccionario.get(i))){
+					diccionario.remove(i);		
+				}
+			}
+			break;
+		case 5:
+			 System.out.println("Salir");
+
+			default:
+				System.out.println("Opcion Invalida");
+			
 			}
 		}
 	}
